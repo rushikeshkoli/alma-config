@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django
+  namespace: alma
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: back-end
+          image: 660829820053.dkr.ecr.ap-south-1.amazonaws.com/alma-assign:latest
+          ports:
+            - containerPort: 8000
+      imagePullSecrets:
+        - name: regcred
