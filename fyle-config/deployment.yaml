@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django
+  namespace: fyle
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: back-end
+          image: 660829820053.dkr.ecr.ap-south-1.amazonaws.com/fyle-backend:latest
+          ports:
+            - containerPort: 8000
+      imagePullSecrets:
+        - name: regcred
+# kubectl create secret docker-registry regcred --docker-server=660829820053.dkr.ecr.ap-south-1.amazonaws.com --docker-username=AWS --docker-password=$PASS
+# PASS=$(aws ecr get-login-password --region ap-south-1)
+# aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 660829820053.dkr.ecr.ap-south-1.amazonaws.com
