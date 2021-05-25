@@ -14,13 +14,13 @@ spec:
         app: web
     spec:
       containers:
-        - env:
-            - name: rds_pwd
-              value: 'admin#123'
         - name: back-end
           image: 660829820053.dkr.ecr.ap-south-1.amazonaws.com/alma-assign:latest
           ports:
             - containerPort: 8000
+          env:
+          - name: rds_pwd
+            value: 'admin#123'
       imagePullSecrets:
         - name: regcred
 # kubectl create secret docker-registry regcred --docker-server=660829820053.dkr.ecr.ap-south-1.amazonaws.com --docker-username=AWS --docker-password=$PASS
