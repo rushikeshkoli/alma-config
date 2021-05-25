@@ -18,6 +18,9 @@ spec:
           image: 660829820053.dkr.ecr.ap-south-1.amazonaws.com/fyle-backend:latest
           ports:
             - containerPort: 8000
+          env:
+          - name: rds_pwd
+            value: 'admin#123'
       imagePullSecrets:
         - name: regcred
 # kubectl create secret docker-registry regcred --docker-server=660829820053.dkr.ecr.ap-south-1.amazonaws.com --docker-username=AWS --docker-password=$PASS
