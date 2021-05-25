@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - env:
-            - name: 'rds_pwd'
+            - name: rds_pwd
               value: 'admin#123'
         - name: back-end
           image: 660829820053.dkr.ecr.ap-south-1.amazonaws.com/alma-assign:latest
